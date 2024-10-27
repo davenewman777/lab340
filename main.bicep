@@ -40,23 +40,24 @@ param location string = 'australiaeast'
 
 @secure()
 param sqlpassword string
+param name string
 
 var rgName = 'rg-waf-az-lab-scenario-2'
-var vnetName = 's2-vnet-${uniqueString(subscription().id)}'
-var apimName = 's2-apim-${uniqueString(subscription().id)}'
-var appGWName = 's2-appgw-${uniqueString(subscription().id)}'
-var sqlServerName = 's2-sql-${uniqueString(subscription().id)}'
-var storageAccountName = 's2sa${uniqueString(subscription().id)}'
+var vnetName = 's2-vnet-${name}'
+//var apimName = 's2-apim-${name}'
+var appGWName = 's2-appgw-${name}'
+var sqlServerName = 's2-sql-${name}'
+var storageAccountName = 's2sa${name}'
 var appServiceSpec = [
   {
-    name: 's2-api-${uniqueString(subscription().id)}'
+    name: 's2-api-${name}'
     kind: 'api'
-    farmName: 's2-apiasp-${uniqueString(subscription().id)}'
+    farmName: 's2-apiasp-${name}'
   }
   {
-    name: 's2-web-${uniqueString(subscription().id)}'
+    name: 's2-web-${name}'
     kind: 'app'
-    farmName: 's2-webasp-${uniqueString(subscription().id)}'
+    farmName: 's2-webasp-${name}'
   }
 ]
 var vnetAddressPrefix = [
@@ -199,14 +200,14 @@ module storageAccount 'br/public:avm/res/storage/storage-account:0.9.1' = {
   }
 }
 
-module apim 'layers/apim.bicep' = {
-  scope: resourceGroup
-  name: 'apimDeployment-s2'
-  params: {
-    apimName: apimName
-    location: location
-  }
-}
+//module apim 'layers/apim.bicep' = {
+//  scope: resourceGroup
+//  name: 'apimDeployment-s2'
+//  params: {
+//    apimName: apimName
+//    location: location
+//  }
+//}
 
 module appGW 'layers/appgw.bicep' = {
   scope: resourceGroup
