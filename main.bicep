@@ -42,7 +42,7 @@ param location string = 'canadacentral'
 param sqlpassword string
 param name string
 
-var rgName = 'rg-waf-az-lab-scenario-2'
+var rgName = 'scenario2rg'
 var vnetName = 's2-vnet-${name}'
 //var apimName = 's2-apim-${name}'
 var appGWName = 's2-appgw-${name}'
