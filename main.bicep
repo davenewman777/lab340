@@ -36,7 +36,7 @@ targetScope = 'subscription'
   'qatarcentral'
 ])
 @description('The Azure region you wish to deploy to. It must support availability zones.')
-param location string = 'australiaeast'
+param location string = 'canadacentral'
 
 @secure()
 param sqlpassword string
